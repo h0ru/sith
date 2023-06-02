@@ -1,0 +1,211 @@
+#!/usr/bin/env ruby
+
+system("clear")
+
+def prompt
+  print "\e[0m[\e[1;4;31mSITH\e[0m]> " 
+end
+
+loop do
+  begin
+    prompt
+    command = gets&.chomp
+
+#exit
+break if command.nil? || command == "exit"
+
+#help
+if command == "help" || command == "?"
+   puts "
+       HELP 
+   ============  
+
+        SITH COMMANDS
+       ===============
+       
+   [\e[1;35m*\e[0m] \e[31m?\e[0m or \e[31mhelp\e[0m  =>  \e[41mTo Check Helps\e[0m
+   [\e[1;35m*\e[0m] \e[31mcls\e[0m or \e[31mclear\e[0m  =>  \e[41mTo Clean the Screen\e[0m
+   [\e[1;35m*\e[0m] \e[31mwhoami\e[0m  =>  \e[41mTo Username\e[0m	
+   [\e[1;35m*\e[0m] \e[31mls\e[0m  =>  \e[41mTo List Local Files on Full Mode\e[0m
+   [\e[1;35m*\e[0m] \e[31ml\e[0m  =>  \e[41mTo List Local Files on Simple Mode\e[0m
+   [\e[1;35m*\e[0m] \e[31mlp\e[0m  =>  \e[41mTo Check Local Ports\e[0m
+   [\e[1;35m*\e[0m] \e[31mip\e[0m  =>  \e[41mTo Check IP Address\e[0m
+   [\e[1;35m*\e[0m] \e[31mnc\e[0m  =>  \e[41mTo Listener\e[0m
+   [\e[1;35m*\e[0m] \e[31mmt\e[0m  =>  \e[41mTo Meterpreter\e[0m  
+   [\e[1;35m*\e[0m] \e[31mdp\e[0m  =>  \e[41mTo Dynamic Port Forwarding\e[0m
+   [\e[1;35m*\e[0m] \e[31mexit\e[0m  =>  \e[41mTo Exit\e[0m
+ 
+        EXTRA COMMANDS
+       ================
+       
+   [\e[1;35m*\e[0m] \e[31mmyrshell\e[0m  =>  \e[41mTo Run MyRevShell\e[0m
+   [\e[1;35m*\e[0m] \e[31mc2\e[0m  =>  \e[41mTo Run Chacal-C2\e[0m
+
+        HOW TO USE
+       ============
+       
+        mt
+       ====
+   [\e[1;35m*\e[0m] \e[31mmt\e[0m
+   [\e[1;35m*\e[0m] \e[40m'linux/x64/meterpreter/reverse_tcp'\e[0m
+   [\e[1;35m*\e[0m] \e[40m'windows/x64/meterpreter/reverse_tcp'\e[0m
+   [\e[1;35m*\e[0m] \e[33mLHOST\e[0m  =>  \e[45mLocal Host\e[0m
+   [\e[1;35m*\e[0m] \e[33mLPORT\e[0m  =>  \e[45mLocal Port\e[0m
+      
+        dp
+       ====
+   [\e[1;35m*\e[0m] \e[31mdp\e[33m PORT USER IP\e[0m
+   [\e[1;35m*\e[0m] \e[33mPORT\e[0m  =>  \e[45mDynamic Port\e[0m
+   [\e[1;35m*\e[0m] \e[33mUSER\e[0m  =>  \e[45mSSH USER\e[0m
+   [\e[1;35m*\e[0m] \e[33mIP\e[0m  =>  \e[45mTarget IP\e[0m
+   
+"
+end
+
+#myrshell
+if command == "myrshell"
+   system("~/.sith/myrshell")
+end
+
+#chacal-c2
+if command == "c2"
+   system("bash ~/.sith/chacal-c2/chacal")
+end
+
+#dproxy
+if command.start_with?("dp")
+  params = command.split(" ")
+  port = params[1].to_i
+  user = params[2]
+  ip = params[3]
+ 
+  if port.positive?
+    system("ssh -D #{port} #{user}@#{ip} -fN")
+  else
+    puts "[\e[31m!\e[0m] Invalid! Try: dp \e[33mPORT USER IP\e[0m"
+  end
+end
+
+#meterpreter
+def mt
+  options = {
+    "linux/x64/meterpreter/reverse_tcp" => "linux/x64/meterpreter/reverse_tcp",
+    "windows/x64/meterpreter/reverse_tcp" => "windows/x64/meterpreter/reverse_tcp"
+  }
+  puts
+  puts "Payload:"
+  options.each_with_index { |(option, _), index| puts "\e[32m #{index + 1}.\e[0m #{option}" }
+
+  choice = gets.chomp.to_i
+
+  payload = options.values[choice - 1]
+
+  puts "The LHOST:"
+  lhost = gets.chomp
+
+  puts "The LPORT:"
+  lport = gets.chomp
+
+  command = "msfconsole -q -x \"use exploit/multi/handler;set payload #{payload};set LHOST #{lhost};set LPORT #{lport};run;exit -y\""
+  system(command)
+end
+
+if command =="mt"
+ mt
+end
+
+#netcat
+def start_reverse_shell(port)
+  system("nc -lvnp #{port}")
+end
+
+if command.start_with?("nc")
+   port = command.split(" ")[1].to_i
+
+  if port.positive?
+
+    shell_thread = Thread.new { start_reverse_shell(port) }
+
+    trap('INT') { shell_thread.kill }
+
+    shell_thread.join
+  else
+    puts "[\e[31m!\e[0m] Invalid port! Try: nc \e[33m4444\e[0m"
+  end
+end
+
+#full list
+if command == "ls"
+   system("ls --color -lAh")
+end
+
+#simple list
+if command == "l"
+   system("ls --color -lh")
+end
+
+#local ports
+if command == "lp"
+   puts "
+State | Address:Port | Process
+=============================="
+   system("ss -tlp|awk '{print $1,$4,$6}'|sed -n '2p'")   
+   puts 
+end
+
+#ip
+if command == "ip"
+   system("nmcli device show | awk '/IP4.ADDRESS/{print $2}'")
+end
+
+#clear
+if command == "clear" || command == "cls"
+   system("clear")
+end
+
+#whoami
+name = ENV['USER']
+if command == "whoami"
+    puts "
+\e[31m                                                                                                                                                           
+                              ##                            
+                          ####  ####                        
+                      ####          ####                    
+                  ######      ##      ######                
+                            ######                          
+            ####        ##  ######  ##        ####          
+        ####                ######                ####      
+    ####        ##          ######          ##        ####  
+    ##        ##            ######            ##        ##  
+    ##    ####                ##                ####    ##  
+    ##    ########            ##            ########    ##  
+    ##    ##########        ######        ##########    ##  
+    ##          ##############################          ##  
+    ##              ######################              ##  
+    ##                ##################                ##  
+                      ##################                    
+    ##                ##################                ##  
+    ##                ####################              ##  
+    ##          ##############################          ##  
+    ##      ##########      ######      ##########      ##  
+    ##    ########            ##            ########    ##  
+    ##    ######              ##              ######    ##  
+    ##      ##              ####                ##      ##  
+    ####        ##          ######          ##        ####  
+      ######                ######                ####      
+          ######            ######            ######        
+              ##          ##########          ##            
+                  ####        ##        ####                
+                      ####          ####                    
+                        ######  ######                      
+                            ######                          
+\e[0m                                                            
+                      The Legendary #{name}                    
+
+"
+end
+
+rescue Interrupt
+    break
+  end
+end
