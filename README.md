@@ -19,6 +19,10 @@ curl -q https://raw.githubusercontent.com/h0ru/sith/main/sith -o sith ; chmod +x
 ```
 ---
 
+<div align="center">
+   <h1> <img src="https://github.com/h0ru/sith/blob/main/map.png" width="1200px"></h1>
+</div>
+
 ## Help
 ```
                               ##                            
