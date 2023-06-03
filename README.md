@@ -10,11 +10,11 @@
 ## How to install?
 ### Wget:
 ```
-
+wget -q https://raw.githubusercontent.com/h0ru/sith/main/sith -O sith ; chmod +x sith ; sudo mv sith /usr/local/bin ; mkdir -p ~/.sith/chacal-c2 ; wget -q https://raw.githubusercontent.com/h0ru/sith/main/chacal -O chacal ; chmod +x chacal ; mv ./chacal ~/.sith/chacal-c2/ ; touch ~/.sith/chacal-c2/targets.txt ; wget -q https://raw.githubusercontent.com/h0ru/myrshell/main/myrshell -O myrshell ; chmod +x ./myrshell ; mv ./myrshell ~/.sith/
 ```
 ### Curl: 
 ```
-
+curl -q https://raw.githubusercontent.com/h0ru/sith/main/sith -o sith ; chmod +x sith ; sudo mv sith /usr/local/bin ; mkdir -p ~/.sith/chacal-c2 ; curl -q https://raw.githubusercontent.com/h0ru/sith/main/chacal -o chacal ; chmod +x chacal ; mv ./chacal ~/.sith/chacal-c2/ ; touch ~/.sith/chacal-c2/targets.txt ; curl -q https://raw.githubusercontent.com/h0ru/myrshell/main/myrshell -o myrshell ; chmod +x ./myrshell ; mv ./myrshell ~/.sith/
 ```
 ---
 
