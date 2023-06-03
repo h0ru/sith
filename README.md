@@ -4,7 +4,6 @@
      <img src="https://img.shields.io/badge/-Kali-red?logo=Kali-Linux&logoColor=black" width="65px">
      <img src="https://img.shields.io/badge/-Ruby-CC342D?logo=Ruby&logoColor=white" width="70px">
      <img src="https://img.shields.io/badge/-Bash-green?logo=GNU-Bash&logoColor=white" width="70px">
-
 </div>
 
 ---
