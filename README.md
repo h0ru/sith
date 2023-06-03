@@ -8,7 +8,7 @@
 
 ---
 
-## How to install?
+## How to Install?
 ### Wget:
 ```
 wget -q https://raw.githubusercontent.com/h0ru/sith/main/sith -O sith ; chmod +x sith ; sudo mv sith /usr/local/bin ; mkdir -p ~/.sith/chacal-c2 ; wget -q https://raw.githubusercontent.com/h0ru/sith/main/chacal -O chacal ; chmod +x chacal ; mv ./chacal ~/.sith/chacal-c2/ ; touch ~/.sith/chacal-c2/targets.txt ; wget -q https://raw.githubusercontent.com/h0ru/myrshell/main/myrshell -O myrshell ; chmod +x ./myrshell ; mv ./myrshell ~/.sith/
@@ -17,11 +17,16 @@ wget -q https://raw.githubusercontent.com/h0ru/sith/main/sith -O sith ; chmod +x
 ```
 curl -q https://raw.githubusercontent.com/h0ru/sith/main/sith -o sith ; chmod +x sith ; sudo mv sith /usr/local/bin ; mkdir -p ~/.sith/chacal-c2 ; curl -q https://raw.githubusercontent.com/h0ru/sith/main/chacal -o chacal ; chmod +x chacal ; mv ./chacal ~/.sith/chacal-c2/ ; touch ~/.sith/chacal-c2/targets.txt ; curl -q https://raw.githubusercontent.com/h0ru/myrshell/main/myrshell -o myrshell ; chmod +x ./myrshell ; mv ./myrshell ~/.sith/
 ```
----
 
-<div align="center">
-   <h1> <img src="https://github.com/h0ru/sith/blob/main/map.png" width="1200px"></h1>
-</div>
+### Running
+```                 
+┌──(kali㉿kali)-[~]
+└─$ sith                   #Run the program
+
+[SITH]> ? or help          #Ask for help
+```
+
+---
 
 ## Help
 ```
@@ -57,4 +62,11 @@ curl -q https://raw.githubusercontent.com/h0ru/sith/main/sith -o sith ; chmod +x
                         ######  ######                      
                             ######                          
 ```
+
 ---
+
+## MAP
+
+<div align="center">
+   <h1> <img src="https://github.com/h0ru/sith/blob/main/map.png" width="1200px"></h1>
+</div>
