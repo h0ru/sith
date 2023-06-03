@@ -48,7 +48,7 @@ accesstarget() {
     echo -e "
     $Pe Acess SSH connection $We
     "
-    credentials_file="~/.sith/chacal-c2/targets.txt"
+    credentials_file="/home/$USER/.sith/chacal-c2/targets.txt"
     read -p "> Target ID: " targetid
     echo
     local line=$(grep "^$targetid" "$credentials_file")
