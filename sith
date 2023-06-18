@@ -12,7 +12,7 @@ loop do
     command = gets&.chomp
 
 #exit
-break if command.nil? || command == "exit"
+break if command.nil? || command == "exit" || command == "x"
 
 #help
 if command == "help" || command == "?"
@@ -30,10 +30,11 @@ if command == "help" || command == "?"
    [\e[1;35m*\e[0m] \e[31ml\e[0m  =>  \e[41mTo List Local Files on Simple Mode\e[0m
    [\e[1;35m*\e[0m] \e[31mlp\e[0m  =>  \e[41mTo Check Local Ports\e[0m
    [\e[1;35m*\e[0m] \e[31mip\e[0m  =>  \e[41mTo Check IP Address\e[0m
+   [\e[1;35m*\e[0m] \e[31mhttp\e[0m  =>  \e[41mTo Start HTTP Service\e[0m   
    [\e[1;35m*\e[0m] \e[31mnc\e[0m  =>  \e[41mTo Listener\e[0m
    [\e[1;35m*\e[0m] \e[31mmt\e[0m  =>  \e[41mTo Meterpreter\e[0m  
    [\e[1;35m*\e[0m] \e[31mdp\e[0m  =>  \e[41mTo Dynamic Port Forwarding\e[0m
-   [\e[1;35m*\e[0m] \e[31mexit\e[0m  =>  \e[41mTo Exit\e[0m
+   [\e[1;35m*\e[0m] \e[31mx\e[0m or \e[31mexit\e[0m  =>  \e[41mTo Exit\e[0m
  
         EXTRA COMMANDS
        ================
@@ -142,6 +143,26 @@ end
 #simple list
 if command == "l"
    system("ls --color -lh")
+end
+
+#http service
+def start_http_service(port)
+  system("python3 -m http.server #{port}")
+end
+
+if command.start_with?("http")
+   port = command.split(" ")[1].to_i
+
+  if port.positive?
+
+    shell_thread = Thread.new { start_http_service(port) }
+
+    trap('INT') { shell_thread.kill }
+
+    shell_thread.join
+  else
+    puts "[\e[31m!\e[0m] Invalid port! Try: http \e[33m8888\e[0m"
+  end
 end
 
 #local ports
