@@ -46,6 +46,7 @@ curl -q https://raw.githubusercontent.com/h0ru/sith/main/sith -o sith ; chmod +x
     ##              ######################              ##       [*] l  =>  To List Local Files on Simple Mode
     ##                ##################                ##       [*] lp  =>  To Check Local Ports
                       ##################                         [*] ip  =>  To Check IP Address
+                      ##################                         [*] http  =>  To Start HTTP Service
     ##                ##################                ##       [*] nc  =>  To Listener
     ##                ####################              ##       [*] mt  =>  To Meterpreter
     ##          ##############################          ##       [*] dp  =>  To Dynamic Port Forwarding
@@ -60,7 +61,7 @@ curl -q https://raw.githubusercontent.com/h0ru/sith/main/sith -o sith ; chmod +x
                   ####        ##        ####                
                       ####          ####                    
                         ######  ######                      
-                            ######                          
+                            ######                   
 ```
 
 ---
