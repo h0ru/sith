@@ -147,7 +147,7 @@ end
 
 #http service
 def start_http_service(port)
-  system("python3 -m http.server #{port}")
+  system("ruby -run -ehttpd . -p #{port}")
 end
 
 if command.start_with?("http")
