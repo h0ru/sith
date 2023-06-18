@@ -50,7 +50,7 @@ curl -q https://raw.githubusercontent.com/h0ru/sith/main/sith -o sith ; chmod +x
     ##                ##################                ##       [*] nc  =>  To Listener
     ##                ####################              ##       [*] mt  =>  To Meterpreter
     ##          ##############################          ##       [*] dp  =>  To Dynamic Port Forwarding
-    ##      ##########      ######      ##########      ##       [*] exit  =>  To Exit
+    ##      ##########      ######      ##########      ##       [*] x or exit  =>  To Exit
     ##    ########            ##            ########    ##  
     ##    ######              ##              ######    ##            EXTRA COMMANDS
     ##      ##              ####                ##      ##           ================  
