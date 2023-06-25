@@ -9,11 +9,11 @@
 echo -e "$We["$Rd"SITH Downloading"$We"]"
 
 echo -e "$Be>$We sith"
-wget -q "https://raw.githubusercontent.com/h0ru/sith/main/sith" -O sith ; chmod +x sith;
+wget -q "https://raw.githubusercontent.com/h0ru/sith/main/files/sith" -O sith ; chmod +x sith;
 echo -e "$Gn finished $We"
 
 echo -e "$Be>$We chacal-c2"
-mkdir -p ~/.sith/chacal-c2 ; wget -q "https://raw.githubusercontent.com/h0ru/sith/main/chacal" -O chacal ; chmod +x chacal ; mv ./chacal ~/.sith/chacal-c2/ ; touch ~/.sith/chacal-c2/targets.txt;
+mkdir -p ~/.sith/chacal-c2 ; wget -q "https://raw.githubusercontent.com/h0ru/sith/main/files/chacal" -O chacal ; chmod +x chacal ; mv ./chacal ~/.sith/chacal-c2/ ; touch ~/.sith/chacal-c2/targets.txt;
 echo -e "$Gn finished $We"
 
 echo -e "$Be>$We myrshell"
