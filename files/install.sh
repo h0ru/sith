@@ -20,6 +20,10 @@ echo -e "$Be>$We myrshell"
 wget -q "https://raw.githubusercontent.com/h0ru/myrshell/main/myrshell" -O myrshell ; chmod +x ./myrshell ; mv ./myrshell ~/.sith/
 echo -e "$Gn finished $We"
 
+echo -e "$Be>$We dragon"
+mkdir -p ~/.sith/dragon ; wget -q "https://raw.githubusercontent.com/h0ru/sith/main/files/dragon" -O dragon ; chmod +x ./dragon ; mv ./dragon ~/.sith/
+echo -e "$Gn finished $We"
+
 echo -e "$Be>$We Move sith to /usr/local/bin/"
 sudo mv sith /usr/local/bin
 echo -e "$Gn finished $We"
