@@ -21,7 +21,7 @@ wget -q "https://raw.githubusercontent.com/h0ru/myrshell/main/myrshell" -O myrsh
 echo -e "$Gn finished $We"
 
 echo -e "$Be>$We dragon"
-mkdir -p ~/.sith/dragon ; wget -q "https://raw.githubusercontent.com/h0ru/sith/main/files/dragon" -O dragon ; chmod +x ./dragon ; mv ./dragon ~/.sith/dragon/
+mkdir -p ~/.sith/drag0n ; wget -q "https://raw.githubusercontent.com/h0ru/sith/main/files/dragon" -O dragon ; chmod +x ./dragon ; mv ./dragon ~/.sith/drag0n/
 echo -e "$Gn finished $We"
 
 echo -e "$Be>$We Move sith to /usr/local/bin/"
