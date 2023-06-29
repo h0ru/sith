@@ -52,7 +52,7 @@ curl https://raw.githubusercontent.com/h0ru/sith/main/files/install.sh | bash
     ####        ##          ######          ##        ####
       ######                ######                ####           [*] myrshell  =>  To Run MyRevShell
           ######            ######            ######             [*] c2  =>  To Run Chacal-C2
-              ##          ##########          ##            
+              ##          ##########          ##                 [*] dragon => To Run Dragon 
                   ####        ##        ####                
                       ####          ####                    
                         ######  ######                      
